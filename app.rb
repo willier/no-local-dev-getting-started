@@ -3,19 +3,26 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require './environments'
+class Case < ActiveRecord::Base
+  self.table_name = 'salesforce.case'
+end
 
+get "/cases" do
+  @cases = Case.all
+  erb :index
+end
 
 get "/" do
   erb :home
 end
 
 
-class Contact < ActiveRecord::Base
-  self.table_name = 'salesforce.contact'
+class Case < ActiveRecord::Base
+  self.table_name = 'salesforce.case'
 end
 
-#get "/contacts" do
-#  @contacts = Contact.all
+#get "/cases" do
+#  @cases = Case.all
 #  erb :index
 #end
 
